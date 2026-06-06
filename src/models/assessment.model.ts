@@ -20,7 +20,8 @@ export function calculateGrade(item: AssessmentItem): number {
   switch (item.kind) {
     case "quiz":
       if (item.totalQuestions === 0) return 0;
-      return Math.round((item.correctAnswers / item.totalQuestions) * 100);
+      // Team A: added pass mark check
+return Math.round((item.correctAnswers / item.totalQuestions) * 100) >= 50 ? Math.round((item.correctAnswers / item.totalQuestions) * 100) : 0;
 
     case "lab":
       return Math.round(item.functionalityScore * 0.7 + item.codeQualityScore * 0.3);
